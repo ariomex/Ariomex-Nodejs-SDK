@@ -206,7 +206,7 @@ class Wallet {
         };
         return this.parent.signAndSend(url, query, method, isPrivateEndpoint);
     }
-    async withdrawCrypto(symbol, network, amount, addressUuid, memo = "") {
+    async withdrawCrypto(symbol, network, amount, address, memo = "") {
         const url = '/v1/private/wallet/withdraw_crypto';
         const isPrivateEndpoint = true;
         const method = 'POST';
@@ -214,7 +214,7 @@ class Wallet {
             symbol: symbol,
             network: network,
             amount: amount,
-            address_uuid: addressUuid,
+            address: address,
             memo: memo
         };
         return this.parent.signAndSend(url, query, method, isPrivateEndpoint);
