@@ -4,7 +4,7 @@ class Ariomex {
     constructor(apiKey = '', apiSecret = '') {
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
-        this.apiUrl = 'https://api.ariomex.com';
+        this.apiUrl = 'https://api.ariomex.ir';
         this.general = new General(this);
         this.account = new Account(this);
         this.wallet = new Wallet(this);
@@ -206,7 +206,7 @@ class Wallet {
         };
         return this.parent.signAndSend(url, query, method, isPrivateEndpoint);
     }
-    async withdrawCrypto(symbol, network, amount, address, memo = "") {
+    async withdrawCrypto(symbol, network, amount, addressUuid, memo = "") {
         const url = '/v1/private/wallet/withdraw_crypto';
         const isPrivateEndpoint = true;
         const method = 'POST';
@@ -214,7 +214,7 @@ class Wallet {
             symbol: symbol,
             network: network,
             amount: amount,
-            address: address,
+            address_uuid: addressUuid,
             memo: memo
         };
         return this.parent.signAndSend(url, query, method, isPrivateEndpoint);
